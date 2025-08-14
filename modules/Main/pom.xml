@@ -109,42 +109,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.massivecraft</groupId>
-            <artifactId>Factions-Legacy</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.2-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>bungeecord-chat</artifactId>
-                    <groupId>net.md-5</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>persistence-api</artifactId>
-                    <groupId>javax.persistence</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>junit</artifactId>
-                    <groupId>junit</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>guava</artifactId>
-                    <groupId>com.google.guava</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>gson</artifactId>
-                    <groupId>com.google.code.gson</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>net.techcable.tacospigot</groupId>
-            <artifactId>WineSpigot</artifactId>
-            <version>1.8.8-R0.2-SNAPSHOT</version>
+            <version>1.21.8-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
@@ -180,6 +147,12 @@
                     <groupId>org.bukkit</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.sk89q.worldguard</groupId>
+            <artifactId>worldguard-bukkit</artifactId>
+            <version>7.0.8</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.sk89q.worldguard</groupId>
@@ -220,6 +193,12 @@
                     <groupId>com.sk89q</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.sk89q.worldedit</groupId>
+            <artifactId>worldedit-bukkit</artifactId>
+            <version>7.2.12</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.sk89q.worldedit</groupId>
@@ -315,6 +294,8 @@
             <artifactId>fanciful</artifactId>
             <version>0.4.0-SNAPSHOT</version>
             <scope>compile</scope>
+<!--            <scope>system</scope>-->
+<!--            <systemPath>${project.basedir}/../../locallibs/fanciful-0.4.0-SNAPSHOT.jar</systemPath>-->
             <exclusions>
                 <exclusion>
                     <artifactId>gson</artifactId>
@@ -448,6 +429,11 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/../../locallibs/CombatTagPlus.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -494,6 +480,14 @@
         <repository>
             <id>local</id>
             <url>file://../../locallibs/m2/</url>
+        </repository>
+        <repository>
+            <id>sk89q-repo</id>
+            <url>https://maven.enginehub.org/repo/</url>
+        </repository>
+        <repository>
+            <id>enginehub-maven</id>
+            <url>https://maven.enginehub.org/repo/</url>
         </repository>
     </repositories>
 </project>

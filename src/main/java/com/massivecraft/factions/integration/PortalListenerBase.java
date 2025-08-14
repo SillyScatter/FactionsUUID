@@ -1,4 +1,4 @@
-package com.massivecraft.factions.listeners.versionspecific;
+package com.massivecraft.factions.integration;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

@@ -8,7 +8,6 @@ import com.massivecraft.factions.config.file.MainConfig;
 import com.massivecraft.factions.perms.Relation;
 import com.massivecraft.factions.perms.Role;
 import com.massivecraft.factions.struct.ChatMode;
-import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

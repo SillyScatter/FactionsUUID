@@ -1,10 +1,11 @@
 package com.massivecraft.factions.integration;
 
-import com.sk89q.worldedit.BlockVector;
-import com.sk89q.worldedit.Vector;
+import com.sk89q.worldedit.bukkit.BukkitAdapter;
+import com.sk89q.worldedit.math.BlockVector3;
+import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
-import com.sk89q.worldguard.protection.flags.DefaultFlag;
+import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
@@ -18,8 +19,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
-import static com.sk89q.worldguard.bukkit.BukkitUtil.toVector;
 
 /**
  * Worldguard Region Checking.
@@ -41,11 +40,12 @@ public class Worldguard6 implements IWorldguard {
     public boolean isPVP(Player player) {
         Location loc = player.getLocation();
         World world = loc.getWorld();
-        Vector pt = toVector(loc);
+        BlockVector3 pt = BukkitAdapter.asBlockVector(loc);
 
-        RegionManager regionManager = wg.getRegionManager(world);
+        RegionManager regionManager = WorldGuard.getInstance().getPlatform().getRegionContainer().get(BukkitAdapter.adapt(world));
+        if (regionManager == null) return true;
         ApplicableRegionSet set = regionManager.getApplicableRegions(pt);
-        return set.allows(DefaultFlag.PVP);
+        return set.testState(null, Flags.PVP);
     }
 
     // Check if player can build at location by worldguards rules.
@@ -54,9 +54,12 @@ public class Worldguard6 implements IWorldguard {
     //	False: Player can not build in the region.
     public boolean playerCanBuild(Player player, Location loc) {
         World world = loc.getWorld();
-        Vector pt = toVector(loc);
+        BlockVector3 pt = BukkitAdapter.asBlockVector(loc);
 
-        return wg.getRegionManager(world).getApplicableRegions(pt).size() > 0 && wg.canBuild(player, loc);
+        RegionManager regionManager = WorldGuard.getInstance().getPlatform().getRegionContainer().get(BukkitAdapter.adapt(world));
+        if (regionManager == null) return true;
+        ApplicableRegionSet regions = regionManager.getApplicableRegions(pt);
+        return regions.testState(WorldGuardPlugin.inst().wrapPlayer(player), Flags.BUILD);
     }
 
     // Check for Regions in chunk the chunk
@@ -72,10 +75,11 @@ public class Worldguard6 implements IWorldguard {
 
         int worldHeight = world.getMaxHeight(); // Allow for heights other than default
 
-        BlockVector minChunk = new BlockVector(minChunkX, 0, minChunkZ);
-        BlockVector maxChunk = new BlockVector(maxChunkX, worldHeight, maxChunkZ);
+        BlockVector3 minChunk = BlockVector3.at(minChunkX, 0, minChunkZ);
+        BlockVector3 maxChunk = BlockVector3.at(maxChunkX, worldHeight, maxChunkZ);
 
-        RegionManager regionManager = wg.getRegionManager(world);
+        RegionManager regionManager = WorldGuard.getInstance().getPlatform().getRegionContainer().get(BukkitAdapter.adapt(world));
+        if (regionManager == null) return false;
         ProtectedCuboidRegion region = new ProtectedCuboidRegion("wgfactionoverlapcheck", minChunk, maxChunk);
         Map<String, ProtectedRegion> allregions = regionManager.getRegions();
         Collection<ProtectedRegion> allregionslist = new ArrayList<>(allregions.values());

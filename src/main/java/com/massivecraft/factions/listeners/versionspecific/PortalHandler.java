@@ -6,6 +6,7 @@ import com.massivecraft.factions.FPlayer;
 import com.massivecraft.factions.FPlayers;
 import com.massivecraft.factions.Faction;
 import com.massivecraft.factions.FactionsPlugin;
+import com.massivecraft.factions.integration.PortalListenerBase;
 import com.massivecraft.factions.perms.Relation;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

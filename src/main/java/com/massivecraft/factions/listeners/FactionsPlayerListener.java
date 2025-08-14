@@ -25,12 +25,10 @@ import com.massivecraft.factions.struct.Permission;
 import com.massivecraft.factions.util.*;
 import com.massivecraft.factions.util.material.MaterialDb;
 import net.coreprotect.CoreProtect;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.craftbukkit.v1_8_R3.util.CraftMagicNumbers;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -390,10 +388,10 @@ public class FactionsPlayerListener extends AbstractListener {
             case LLAMA:
             case TRADER_LLAMA:
             case PIG:
-            case LEASH_HITCH:
-            case MINECART_CHEST:
-            case MINECART_FURNACE:
-            case MINECART_HOPPER:
+            case LEASH_KNOT:
+            case CHEST_MINECART:
+            case FURNACE_MINECART:
+            case HOPPER_MINECART:
                 if (!FactionsPlugin.getInstance().conf().factions().protection().getEntityInteractExceptions().contains(event.getRightClicked().getType().name()) &&
                         !this.playerCanInteractHere(event.getPlayer(), event.getRightClicked().getLocation())) {
                     event.setCancelled(true);
@@ -929,7 +927,7 @@ public class FactionsPlayerListener extends AbstractListener {
             String[] strings = info.get(i);
             String material;
             try {
-                material = CraftMagicNumbers.getMaterial(CraftMagicNumbers.getBlock(Integer.parseInt(strings[5]))).name().toLowerCase();
+                material = requestedBlock.getBlockData().getMaterial().name();
             } catch (Throwable exc) {
                 // Can be thrown from a material that doesn't exist.
                 material = "Unknown";

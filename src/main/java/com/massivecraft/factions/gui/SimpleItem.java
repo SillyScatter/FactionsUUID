@@ -57,7 +57,7 @@ public class SimpleItem {
                 meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
             }
             if (enchant) {
-                meta.addEnchant(Enchantment.LUCK, 1, true);
+                meta.addEnchant(Enchantment.LURE, 1, true);
             }
 
             // If a user places a color, they should be expected to put a colorable object

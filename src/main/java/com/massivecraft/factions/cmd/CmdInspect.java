@@ -7,7 +7,6 @@ import com.massivecraft.factions.util.TextUtil;
 import com.massivecraft.factions.util.TimeFormat;
 import net.coreprotect.CoreProtect;
 import org.bukkit.block.Block;
-import org.bukkit.craftbukkit.v1_8_R3.util.CraftMagicNumbers;
 
 import java.util.List;
 
@@ -52,7 +51,7 @@ public class CmdInspect extends FCommand{
                 Object[] vars = new Object[] {i + 1,
                         strings[1],
                         calcTime(Long.parseLong(strings[0])),
-                        CraftMagicNumbers.getMaterial(CraftMagicNumbers.getBlock(Integer.parseInt(strings[5]))).name().toLowerCase(),
+                        //CraftMagicNumbers.getMaterial(CraftMagicNumbers.getBlock(Integer.parseInt(strings[5]))).name().toLowerCase(),
                         intToAction(Integer.parseInt(strings[7]), Integer.parseInt(strings[6]))};
                 context.fPlayer.msg(TL.INSPECT_FORMAT, vars);
             }

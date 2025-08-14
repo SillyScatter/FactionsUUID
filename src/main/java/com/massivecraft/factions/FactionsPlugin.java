@@ -21,7 +21,6 @@ import com.massivecraft.factions.integration.permcontext.ContextManager;
 import com.massivecraft.factions.landraidcontrol.LandRaidControl;
 import com.massivecraft.factions.listeners.*;
 import com.massivecraft.factions.listeners.versionspecific.PortalHandler;
-import com.massivecraft.factions.listeners.versionspecific.PortalListenerLegacy;
 import com.massivecraft.factions.listeners.versionspecific.PortalListener_114;
 import com.massivecraft.factions.perms.Permissible;
 import com.massivecraft.factions.perms.PermissibleAction;
@@ -405,7 +404,7 @@ public class FactionsPlugin extends JavaPlugin implements FactionsAPI {
         if (mcVersion >= 1400) { // Starting with 1.14
             getServer().getPluginManager().registerEvents(new PortalListener_114(this), this);
         } else {
-            getServer().getPluginManager().registerEvents(new PortalListenerLegacy(new PortalHandler()), this);
+            //getServer().getPluginManager().registerEvents(new PortalListenerLegacy(new PortalHandler()), this);
         }
 
         // since some other plugins execute commands directly through this command interface, provide it
