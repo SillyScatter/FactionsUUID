@@ -186,6 +186,10 @@ public class DefaultPermissionsConfig {
 
         public FullPermInfo getCorner(){return this.corner;}
 
+        public FullPermInfo getChunkbust() {
+            return chunkbust;
+        }
+
         @Comment("Can change repeaters")
         private FullPermInfo repeater = new FullPermInfo(){
             {
@@ -200,6 +204,14 @@ public class DefaultPermissionsConfig {
         private FullPermInfo corner = new FullPermInfo(){
             {
                 this.coleader.value = true;
+            }
+        };
+
+        @Comment("Can chunkbust in claims")
+        private FullPermInfo chunkbust = new FullPermInfo(){
+            {
+                this.coleader.value = true;
+                this.moderator.value = true;
             }
         };
 

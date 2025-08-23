@@ -1006,6 +1006,7 @@ public enum TL {
     PERM_TNTDEPOSIT("Deposit TNT into faction bank"),
     PERM_TNTWITHDRAW("Withdraw TNT from faction bank"),
     PERM_CLAIMCORNER("Claim a corner for your faction"),
+    PERM_CHUNKBUST("Use a ChunkBuster in your claims"),
     PERM_WARP("Using faction warps"),
     PERM_FLY("Flying in faction territory"),
     PERM_OWNER("Set ownership of land using /f owner in faction territory"),
@@ -1040,6 +1041,7 @@ public enum TL {
     PERM_SHORT_FLY("fly"),
     PERM_SHORT_OWNER("set ownership"),
     PERM_SHORT_CLAIMCORNER("claim a corner"),
+    PERM_SHORT_CHUNKBUST("chunkbust a chunk"),
     PERM_SHORT_ROSTERCONTROL("control roster"),
     PERM_SHORT_TASKS("manage tasks"),
 
