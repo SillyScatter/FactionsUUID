@@ -13,6 +13,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>octane</id>
+            <url>https://repo.octanepvp.com/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <defaultGoal>clean package install</defaultGoal>
         <finalName>${project.name}</finalName>
